@@ -68,7 +68,8 @@ def menu():
 
     if choice == 1:
 
-        acc_no = int(input("Enter account number: "))
+        print("\n< CREATING A NEW ACCOUNT >")
+        acc_no = int(input("\nEnter account number: "))
         owner = input("Enter your name: ")
 
         while True:
@@ -78,20 +79,22 @@ def menu():
                 for num in pin:
                     pin_list.append(num)
                 if len(pin_list) != 4:
-                    raise PinCodeLengthError("\nPin code must be of 4 digits.\n")
+                    raise PinCodeLengthError(
+                        "\n< ERROR: Pin code must be of 4 digits >\n"
+                    )
                 break
             except PinCodeLengthError as e:
                 print(e)
 
         if acc_no not in accounts:
             accounts[acc_no] = Account(acc_no, owner, pin)
-            print("\nSTATUS: Account successfully created")
+            print("\n< STATUS: Account successfully created >")
 
             menu_option = input("\nPress 'M' to go back: ")
             if menu_option.upper() == "M":
                 menu()
         else:
-            print("\nWARNING: Account already exists")
+            print("\n< WARNING: Account already exists >")
 
             menu_option = input("\nPress 'M' to go back: ")
             if menu_option.upper() == "M":
@@ -99,10 +102,11 @@ def menu():
 
     elif choice == 2:
 
-        acc_no = int(input("Enter account number: "))
+        print("\n< DEPOSITING CASH >")
+        acc_no = int(input("\nEnter account number: "))
 
         if acc_no not in accounts:
-            print("\nWARNING: Account does not exist")
+            print("\n< WARNING: Account does not exist >")
 
             menu_option = input("\nPress 'M' to go back: ")
             if menu_option.upper() == "M":
@@ -112,7 +116,7 @@ def menu():
             amount = float(input("Enter the amount you want to deposit: "))
 
             if amount <= 0:
-                print("\nWARNING: Invalid amount!")
+                print("\n< WARNING: Invalid amount! >")
 
                 menu_option = input("\nPress 'M' to go back: ")
                 if menu_option.upper() == "M":
@@ -128,10 +132,11 @@ def menu():
 
     elif choice == 3:
 
-        acc_no = int(input("Enter account number: "))
+        print("\n< WITHDRAWING CASH >")
+        acc_no = int(input("\nEnter account number: "))
 
         if acc_no not in accounts:
-            print("\nWARNING: Account does not exist")
+            print("\n< WARNING: Account does not exist >")
 
             menu_option = input("\nPress 'M' to go back: ")
             if menu_option.upper() == "M":
@@ -149,7 +154,7 @@ def menu():
                 if menu_option.upper() == "M":
                     menu()
             else:
-                print("\nWARNING: Pin code does not match!")
+                print("\n< WARNING: Pin code does not match! >")
 
                 menu_option = input("\nPress 'M' to go back: ")
                 if menu_option.upper() == "M":
@@ -157,10 +162,11 @@ def menu():
 
     elif choice == 4:
 
-        acc_no = int(input("Enter account number: "))
+        print("\n< BALANCE CHECKER >")
+        acc_no = int(input("\nEnter account number: "))
 
         if acc_no not in accounts:
-            print("\nWARNING: Account does not exist")
+            print("\n< WARNING: Account does not exist >")
 
             menu_option = input("\nPress 'M' to go back: ")
             if menu_option.upper() == "M":
